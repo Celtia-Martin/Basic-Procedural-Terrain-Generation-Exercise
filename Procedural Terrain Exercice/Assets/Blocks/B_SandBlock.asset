@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a5336853b3a5940ac3d1c427e4e68e, type: 3}
+  m_Name: B_SandBlock
+  m_EditorClassIdentifier: 
+  prefabBlock: {fileID: 1760710281020386076, guid: fe2bd6c5460b51842968064167b80a50,
+    type: 3}
+  blockType: 1
