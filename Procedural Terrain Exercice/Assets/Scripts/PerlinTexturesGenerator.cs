@@ -14,7 +14,7 @@ public class PerlinTexturesGenerator :MonoBehaviour
     [Range(0.03f,90f)]private float scale;
     private int offset;
     [SerializeField]
-    private float sizeBlock;
+    private float sizeBlock=1;
     [SerializeField]
     private BlockType[] blocks;
     [SerializeField]
@@ -35,7 +35,7 @@ public class PerlinTexturesGenerator :MonoBehaviour
     }
     private void Start()
     {
-        sizeBlock = blocks[0].prefabBlock.GetComponent<MeshRenderer>().bounds.size.y;
+        //sizeBlock = blocks[0].prefabBlock.GetComponent<MeshRenderer>().bounds.size.y;
         spawnedBlocks = new Queue<BlockInfo>();
         offset = Random.Range(0, 999999);
      
@@ -58,14 +58,13 @@ public class PerlinTexturesGenerator :MonoBehaviour
     }
     IEnumerator GeneratingWorld()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.01f);
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
                 BlockInfo newBlock = GetNewBlock(GetPerlinNoiseValue(i, j));
                 newBlock.SpawnBlocks(i * sizeBlock, 0, j * sizeBlock);
-
                 spawnedBlocks.Enqueue(newBlock);
 
             }

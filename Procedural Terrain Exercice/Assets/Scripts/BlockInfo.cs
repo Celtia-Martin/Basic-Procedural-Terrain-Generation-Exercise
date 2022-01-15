@@ -7,7 +7,7 @@ public class BlockInfo
 
     private BlockType blockType;
     private int height;
-    private float sizeBlock;
+    private float sizeBlock=1;
     private int mul = 10;
     private Queue<GameObject> prefabsSpawned;
     public static float waterValue = 0.2f;
@@ -21,15 +21,20 @@ public class BlockInfo
         this.height =  blockType.blockType.Equals(BlockTypeEnum.WATER)?1:Mathf.Max((int)((10 * height)-(waterValue*10)+2),1);
         this.blockType = blockType;
         
-        sizeBlock = blockType.prefabBlock.GetComponent<MeshRenderer>().bounds.size.y;
+        //sizeBlock = blockType.prefabBlock.GetComponent<MeshRenderer>().bounds.size.y;
         
         prefabsSpawned = new Queue<GameObject>();
     }
     
     public void SpawnBlocks(float x, float y, float z)
     {
-        prefabsSpawned.Enqueue(Object.Instantiate(blockType.prefabBlock, new Vector3(x, y + sizeBlock * height, z), Quaternion.identity));
-        prefabsSpawned.Enqueue(Object.Instantiate(blockType.prefabBlock, new Vector3(x, y + sizeBlock * height-sizeBlock, z), Quaternion.identity));
+
+        prefabsSpawned.Enqueue(PoolManager.singleton.getFromPool(blockType.prefabBlock, new Vector3(x, y + sizeBlock * height, z)));
+        prefabsSpawned.Enqueue(PoolManager.singleton.getFromPool(blockType.prefabBlock, new Vector3(x, y + sizeBlock * height - sizeBlock, z)));
+        //Debug.LogError(new Vector3(x, y + sizeBlock * height, z));
+        //prefabsSpawned.Enqueue(Object.Instantiate(blockType.prefabBlock, new Vector3(x, y + sizeBlock * height - sizeBlock, z), Quaternion.identity));
+        //prefabsSpawned.Enqueue(Object.Instantiate(blockType.prefabBlock, new Vector3(x, y + sizeBlock * height, z), Quaternion.identity));
+        //prefabsSpawned.Enqueue(Object.Instantiate(blockType.prefabBlock, new Vector3(x, y + sizeBlock * height-sizeBlock, z), Quaternion.identity));
         //Filled Terrain:
         //for(int i=1; i <= height; i++) 
         //{
@@ -40,8 +45,8 @@ public class BlockInfo
     {
         while (prefabsSpawned.Count > 0)
         {
- 
-            Object.Destroy(prefabsSpawned.Dequeue());
+            PoolManager.singleton.addToPool(blockType.prefabBlock,prefabsSpawned.Dequeue()) ;
+            //Object.Destroy(prefabsSpawned.Dequeue());
   
         }
     }

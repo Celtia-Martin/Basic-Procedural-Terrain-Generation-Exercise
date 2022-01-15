@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a5336853b3a5940ac3d1c427e4e68e, type: 3}
   m_Name: B_ForestBlock
   m_EditorClassIdentifier: 
-  prefabBlock: {fileID: 3597809328512300909, guid: 7b893253ad4eff14ca601c6cb5e8efe7,
-    type: 3}
+  prefabBlock: ForestBlock
   blockType: 3

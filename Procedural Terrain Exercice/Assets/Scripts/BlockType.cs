@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Blocks", menuName = "ScriptableObjects/Blocks", order = 1)]
 public class BlockType : ScriptableObject
 {
-    public GameObject prefabBlock;
+    public string prefabBlock;
     public BlockTypeEnum blockType;
    
 }

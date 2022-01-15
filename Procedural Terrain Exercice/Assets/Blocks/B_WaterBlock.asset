@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a5336853b3a5940ac3d1c427e4e68e, type: 3}
   m_Name: B_WaterBlock
   m_EditorClassIdentifier: 
-  prefabBlock: {fileID: 1807955246593896240, guid: 03ff9b5fafbb58945846d4546a84b8b6,
-    type: 3}
+  prefabBlock: WaterBlock
   blockType: 0
